@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #000000;
   --foreground: #171717;
 }
 
@@ -24,3 +24,15 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.glass-bg {
+  background: linear-gradient(135deg, rgba(36, 40, 54, 0.85) 0%, rgba(24, 28, 44, 0.85) 100%);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  /* border-radius: 20px; */
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  transition: box-shadow 0.3s;
+}
+
+
