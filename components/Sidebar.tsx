@@ -32,6 +32,9 @@ export function Sidebar() {
         <Link href="/dashboard/transactions" className="block hover:underline">
           📄 {!collapsed && 'Transactions'}
         </Link>
+        <Link href="/dashboard/settings" className="block hover:underline">
+          # {!collapsed && 'Settings'}
+        </Link>
       </nav>
 
       <div className="mt-8">
