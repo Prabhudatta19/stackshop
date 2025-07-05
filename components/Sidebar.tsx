@@ -11,8 +11,11 @@ export function Sidebar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isDesktopCollapsed, setIsDesktopCollapsed] = useState(false);
 
+  const iconSize = isDesktopCollapsed ? 'w-6 h-6' : 'w-5 h-5';
+  const iconStroke = isDesktopCollapsed ? 2.5 : 1.5;
+
   const linkClasses = (path) =>
-    `flex items-center gap-3 text-gray-300 hover:text-white px-3 py-2 rounded-md transition ${
+    `flex items-center ${isDesktopCollapsed ? 'justify-center' : 'justify-start'} gap-3 text-gray-300 hover:text-white px-3 py-2 rounded-md transition ${
       pathname === path ? 'bg-blue-800 text-white' : ''
     }`;
 
@@ -32,7 +35,7 @@ export function Sidebar() {
       <aside
         className={`fixed md:static top-0 left-0 h-full p-4 flex flex-col justify-between bg-[#0B1D3A] border-r transition-all duration-300 z-40
           ${isMobileOpen ? 'translate-x-0 w-64' : '-translate-x-full w-64'} 
-          ${isDesktopCollapsed ? 'md:w-16' : 'md:w-64'} 
+          ${isDesktopCollapsed ? 'md:w-16 md:min-w-[64px]' : 'md:w-64'} 
           md:translate-x-0
         `}
       >
@@ -59,27 +62,27 @@ export function Sidebar() {
 
           <nav className="space-y-4 text-sm">
             <Link href="/dashboard" className={linkClasses('/dashboard')}>
-              <LayoutDashboard className="w-5 h-5" />
+              <LayoutDashboard className={`${iconSize} min-w-5 min-h-5`} strokeWidth={iconStroke} />
               {!isDesktopCollapsed && <span>Dashboard</span>}
             </Link>
 
             <Link href="/dashboard/customers" className={linkClasses('/dashboard/customers')}>
-              <Users className="w-5 h-5" />
+              <Users className={`${iconSize} min-w-5 min-h-5`} strokeWidth={iconStroke} />
               {!isDesktopCollapsed && <span>Customers</span>}
             </Link>
 
             <Link href="/dashboard/transactions" className={linkClasses('/dashboard/transactions')}>
-              <FileText className="w-5 h-5" />
+              <FileText className={`${iconSize} min-w-5 min-h-5`} strokeWidth={iconStroke} />
               {!isDesktopCollapsed && <span>Transactions</span>}
             </Link>
 
             <Link href="/dashboard/products" className={linkClasses('/dashboard/products')}>
-              <Package className="w-5 h-5" />
+              <Package className={`${iconSize} min-w-5 min-h-5`} strokeWidth={iconStroke} />
               {!isDesktopCollapsed && <span>Products</span>}
             </Link>
 
             <Link href="/dashboard/settings" className={linkClasses('/dashboard/settings')}>
-              <Settings className="w-5 h-5" />
+              <Settings className={`${iconSize} min-w-5 min-h-5`} strokeWidth={iconStroke} />
               {!isDesktopCollapsed && <span>Settings</span>}
             </Link>
           </nav>
@@ -87,8 +90,8 @@ export function Sidebar() {
 
         <div>
           <LogoutButton>
-            <div className="flex items-center gap-3 text-gray-300 hover:text-white px-3 py-2 rounded-md cursor-pointer">
-              <LogOut className="w-5 h-5" />
+            <div className={`flex items-center ${isDesktopCollapsed ? 'justify-center' : 'justify-start'} gap-3 text-gray-300 hover:text-white px-3 py-2 rounded-md cursor-pointer`}>
+              <LogOut className={`${iconSize} min-w-5 min-h-5`} strokeWidth={iconStroke} />
               {!isDesktopCollapsed && <span>Logout</span>}
             </div>
           </LogoutButton>
@@ -97,4 +100,3 @@ export function Sidebar() {
     </div>
   );
 }
-
